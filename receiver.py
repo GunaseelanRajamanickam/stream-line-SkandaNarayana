@@ -1,7 +1,7 @@
 
 import sys
 
-parameters = ["soc", "temp", "chargeRate"]
+parameters = ["soc", "temp"]
 
 def inferReceivedData(windowSize, readFromConsole, formulateReadings, extractEachParameterReadings, calculateMovingAverage, calculateMinMaxReading, convertCSVFormat, printOnConsole):
     stream = readFromConsole()
@@ -9,7 +9,6 @@ def inferReceivedData(windowSize, readFromConsole, formulateReadings, extractEac
     statisticsReading = []
     for parameter in parameters:
         readings = extractEachParameterReadings(mergedreadings, parameter)
-        print(readings)
         movingAverage = calculateMovingAverage(readings, windowSize)
         minMaxReading = calculateMinMaxReading(readings)
         formattedString = convertCSVFormat(parameter,minMaxReading,movingAverage)
@@ -24,11 +23,11 @@ def readFromConsole():  # pragma: no cover
 def formulateReadings(stream):
     mergedReadings = []
     for reading in range(2):
-        reading = reading.strip('\n')
-        reading[reading.find(','):]
-        formattedreading = list(map(float,reading.split(' ')))
+        readings = stream[reading]
+        readings = readings.strip('\n')
+        readings = readings[(readings.find(',')+1):]
+        formattedreading = list(map(float,readings.split(' ')))
         mergedReadings.append(formattedreading)
-    print(mergedReadings)
     return mergedReadings
 
 def extractEachParameterReadings(mergedReadings, parameter):
