@@ -60,7 +60,7 @@ jobs:
         retention-days: 21
 
     - name: build
-      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage testchecker *.cpp -o testchecker
+      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage test_sender.cpp -o testchecker
       
     - name: run
       run: ./testchecker
