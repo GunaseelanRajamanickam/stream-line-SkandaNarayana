@@ -63,7 +63,7 @@ jobs:
       run: ./testchecker | python receiver.py
 
     - name: build
-      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage -o testchecker *.cpp
+      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage testchecker *.cpp -o testchecker
       
     - name: run
       run: ./testchecker
