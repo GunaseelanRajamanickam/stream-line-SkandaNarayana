@@ -18,19 +18,17 @@ class SenderTest(unittest.TestCase):
     def test_getindex(self):
         self.assertTrue(receiver.getindex("soc") == 0)
         self.assertTrue(receiver.getindex("temp") == 1)
-        self.assertTrue(receiver.getindex("chargeRate") == 2)
     
     def test_formulateReadings(self):
         self.assertTrue(receiver.formulateReadings(['soc,5 10 20\n','temp,6 15 30\n']) == [[5,10,20],[6,15,30]])
 
     def test_extractEachParameterReadings(self):
-        self.assertTrue(receiver.extractEachParameterReadings([[5,10,20],[6,15,30]], "soc") == [5,6])
-        self.assertTrue(receiver.extractEachParameterReadings([[5,10,20],[6,15,30]], "temp") == [10,15])
-        self.assertTrue(receiver.extractEachParameterReadings([[5,10,20],[6,15,30]], "chargeRate") == [20,30])
+        self.assertTrue(receiver.extractEachParameterReadings([[5,10,20],[6,15,30]], "soc") == [5,10,20])
+        self.assertTrue(receiver.extractEachParameterReadings([[5,10,20],[6,15,30]], "temp") == [6,15,30])
 
-    @mock.patch('receiver.readFromConsole', return_value=['20,30,20\n', '22,32,25\n', '24,32,27\n', '26,32,28\n', '27,32,29\n', '28,32,30\n', '29,32,31\n', '31,33,32\n'])
+    @mock.patch('receiver.readFromConsole', return_value=['SOC,10 20 50 100 80 90 60 44 15 54\n', 'TEMPERATURE,1 4 7 9 2 5 2 20 15 30\n'])
     def test_inferReceivedData(self, mock_readFromConsole):
-        expected_output = ["soc:{'min': 20.0, 'max': 31.0},[23.8, 25.4, 26.8, 28.2]", "temp:{'min': 30.0, 'max': 33.0},[31.6, 32.0, 32.0, 32.2]", "chargeRate:{'min': 20.0, 'max': 32.0},[25.8, 27.8, 29.0, 30.0]"]
+        expected_output = ["soc:{'min': 10.0, 'max': 100.0},[52.0, 68.0, 76.0, 74.8, 57.8, 52.6]", "temp:{'min': 1.0, 'max': 30.0},[4.6, 5.4, 5.0, 7.6, 8.8, 14.4]"]
         self.assertTrue(receiver.inferReceivedData(5, mock_readFromConsole, receiver.formulateReadings, receiver.extractEachParameterReadings, receiver.calculateMovingAverage, receiver.calculateMinMaxReading, receiver.convertCSVFormat, receiver.printOnConsole) == expected_output)
 
 if __name__ == '__main__': # pragma: no cover
