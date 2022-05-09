@@ -26,7 +26,7 @@ def formulateReadings(stream):
     for reading in range(2):
         reading = reading.strip('\n')
         reading[reading.find(','):]
-        formattedreading = list(map(float,csvReading.split(' ')))
+        formattedreading = list(map(float,reading.split(' ')))
         mergedReadings.append(formattedreading)
     print(mergedReadings)
     return mergedReadings
