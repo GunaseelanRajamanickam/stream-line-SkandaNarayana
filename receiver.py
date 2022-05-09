@@ -9,6 +9,7 @@ def inferReceivedData(windowSize, readFromConsole, formulateReadings, extractEac
     statisticsReading = []
     for parameter in parameters:
         readings = extractEachParameterReadings(mergedreadings, parameter)
+        print(readings)
         movingAverage = calculateMovingAverage(readings, windowSize)
         minMaxReading = calculateMinMaxReading(readings)
         formattedString = convertCSVFormat(parameter,minMaxReading,movingAverage)
@@ -22,15 +23,17 @@ def readFromConsole():  # pragma: no cover
     
 def formulateReadings(stream):
     mergedReadings = []
-    for csvReading in stream:
-        csvReading = csvReading.strip('\n')
-        reading = list(map(float,csvReading.split(',')))
-        mergedReadings.append(reading)
+    for reading in range(2):
+        reading = reading.strip('\n')
+        reading[reading.find(','):]
+        formattedreading = list(map(float,csvReading.split(' ')))
+        mergedReadings.append(formattedreading)
+    print(mergedReadings)
     return mergedReadings
 
 def extractEachParameterReadings(mergedReadings, parameter):
     index = getindex(parameter)
-    return [readings[index] for readings in mergedReadings]
+    return mergedReadings[index]
 
 def getindex(parameter):
     for index, parameterName in enumerate(parameters):
