@@ -10,6 +10,8 @@ int main()
     std::unordered_map<std::string , std::vector<int>> soc = {};
     std::string temperatureValueFilePath = "../temperatureRangeOfValues.txt";
     std::string socValueFilePath = "../SoCValuesFromSensor.txt";
+    std::cout << temperatureValueFilePath;
+    std::cout << socValueFilePath;
     Sender* senderObj = new Sender;
     temperature = senderObj->readFromFile(temperatureValueFilePath, "TEMPERATURE");
     soc = senderObj->readFromFile(socValueFilePath, "SOC");
