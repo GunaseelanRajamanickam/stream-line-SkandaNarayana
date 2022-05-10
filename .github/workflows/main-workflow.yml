@@ -61,8 +61,8 @@ jobs:
     
     - name : pipeline
       run: |
-         g++ -Wall -Wextra -o testchecker *.cpp 
-         ./testchecker
+         g++ -Wall -Wextra -o senderexecutable ./senderMain/senderMain.cpp 
+         ./senderexecutable
          python receiver.py
       
     - name: run receiver.test.py
