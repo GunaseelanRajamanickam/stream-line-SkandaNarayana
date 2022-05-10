@@ -60,7 +60,7 @@ jobs:
         retention-days: 21
         
     - name: run console redirection and pipes
-      run: ./testchecker | receiver
+      run: ./testchecker | python receiver.py
 
     - name: install coverage tool
       run: |
@@ -71,9 +71,6 @@ jobs:
       
     - name: run
       run: ./testchecker
-        
-    - name: receiver
-      run: python receiver.py
       
     - name: run receiver.test.py
       run: python receiver.test.py
