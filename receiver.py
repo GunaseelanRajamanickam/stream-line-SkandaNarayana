@@ -25,7 +25,7 @@ def formulateReadings(stream):
     mergedReadings = []
     for reading in range(2):
         readings = stream[reading]
-        readings = readings.strip('\n')
+        readings = readings.strip(' \n')
         readings = readings[(readings.find(',')+1):]
         formattedreading = list(map(float,readings.split(' ')))
         mergedReadings.append(formattedreading)
