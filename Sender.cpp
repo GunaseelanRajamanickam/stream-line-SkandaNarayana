@@ -34,6 +34,5 @@ std::string Sender::writeToConsole() {
         output += "\n";
     }
     std::cout << output;
-    std::cout.flush();
     return output;
 }
