@@ -20,7 +20,7 @@ def inferReceivedData(windowSize, readFromConsole, formulateReadings, extractEac
 def readFromConsole():  # pragma: no cover
     lines = sys.stdin.readlines()
     if not lines:
-        ['SOC,10 20 50 100 80 90 60 44 15 54 65 54 10 20 50 100 80 90 60 44 15 54 65 54 10 20 50 100 80 90 60 44 15 54 65 54 10 20 50 100 80 90 60 44 15 54 65 54 88 66 \n', 'TEMPERATURE,1 4 7 9 2 5 2 20 15 30 1 4 7 9 2 5 2 20 15 30 1 4 7 9 2 5 2 20 15 30 1 4 7 9 2 5 2 20 15 30 1 4 7 9 2 5 2 20 15 30 \n']
+        lines = ['SOC,10 20 50 100 80 90 60 44 15 54 65 54 10 20 50 100 80 90 60 44 15 54 65 54 10 20 50 100 80 90 60 44 15 54 65 54 10 20 50 100 80 90 60 44 15 54 65 54 88 66 \n', 'TEMPERATURE,1 4 7 9 2 5 2 20 15 30 1 4 7 9 2 5 2 20 15 30 1 4 7 9 2 5 2 20 15 30 1 4 7 9 2 5 2 20 15 30 1 4 7 9 2 5 2 20 15 30 \n']
     return lines
     
 def formulateReadings(stream):
