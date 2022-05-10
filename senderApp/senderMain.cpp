@@ -1,6 +1,7 @@
 #include <chrono>
 #include <thread>
 
+#include "test/catch.hpp"
 #include "../Sender.h"
 
 int main()
