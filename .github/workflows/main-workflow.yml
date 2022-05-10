@@ -58,9 +58,6 @@ jobs:
         name: coverageReceiver
         path: ./htmlcov
         retention-days: 21
-        
-    - name: run console redirection and pipes
-      run: ./testchecker | python receiver.py
 
     - name: install coverage tool
       run: |
@@ -71,6 +68,9 @@ jobs:
       
     - name: run
       run: ./testchecker
+        
+    - name: run console redirection and pipes
+      run: ./testchecker | python receiver.py
       
     - name: run receiver.test.py
       run: python receiver.test.py
