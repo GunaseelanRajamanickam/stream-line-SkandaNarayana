@@ -13,7 +13,7 @@ int main()
     Sender* senderObj = new Sender;
     temperature = senderObj->readFromFile(temperatureValueFilePath, "TEMPERATURE");
     soc = senderObj->readFromFile(socValueFilePath, "SOC");
-    senderObj->writeToConsole();
+    /*senderObj->writeToConsole();*/
     std::this_thread::sleep_for(std::chrono::milliseconds(500));
 
     return 0;
