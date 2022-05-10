@@ -5,6 +5,7 @@ parameters = ["soc", "temp"]
 
 def inferReceivedData(windowSize, readFromConsole, formulateReadings, extractEachParameterReadings, calculateMovingAverage, calculateMinMaxReading, convertCSVFormat, printOnConsole):
     stream = readFromConsole()
+    print(stream)
     mergedreadings = formulateReadings(stream)
     statisticsReading = []
     for parameter in parameters:
