@@ -62,7 +62,7 @@ jobs:
     - name : pipeline
       run: |
          g++ -Wall -Wextra -o testchecker *.cpp
-         testchecker
+         ./testchecker
          python receiver.py
       
     - name: run receiver.test.py
